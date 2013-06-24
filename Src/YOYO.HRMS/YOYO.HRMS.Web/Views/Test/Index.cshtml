@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script language="javascript" type="text/javascript">
+    $(function () {
+       
+        $('#dd').form({
+            url: '@Url.Content("~/Test/GetFormData")',
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (data) {
+                //alert(data);
+                $.messager.show({
+                    title: 'Info',
+                    msg: data,
+                    timeout: 5000,
+                    showType: 'slide'
+                });
+            }
+        });
+    });
+</script>
+
+
+<h2>Index</h2>
+<form id="dd" method="post">
+    <div>
+    <input id="a1" name="a1" value="QQ" />
+    <input id="a2" name="a2" value="QQ2" />
+    <input type="submit" value="Submit" />
+    </div>
+</form>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{52DCE93D-1F9F-4802-81E9-E0FBFAE0E4DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YOYO.HRMS.DataAccess</RootNamespace>
+    <AssemblyName>YOYO.HRMS.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OrganizationManagement\Impl\CorporateRepository.cs" />
+    <Compile Include="PetaPocoDBFactory.cs" />
+    <Compile Include="PetaPocoRepository.cs" />
+    <Compile Include="PetaPocoUnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemManagement\Impl\UserCorporatePrivRepository.cs" />
+    <Compile Include="SystemManagement\Impl\UserRepository.cs" />
+    <Compile Include="OrganizationManagement\Interface\ICorporateRepository.cs" />
+    <Compile Include="SystemManagement\Interface\ILocalizedTypeRepository.cs" />
+    <Compile Include="SystemManagement\Interface\ILocalizedViewRepository.cs" />
+    <Compile Include="SystemManagement\Interface\IModelRepository.cs" />
+    <Compile Include="SystemManagement\Interface\ISyslangRepository.cs" />
+    <Compile Include="SystemManagement\Impl\LocalizedTypeRepository.cs" />
+    <Compile Include="SystemManagement\Impl\LocalizedViewRepository.cs" />
+    <Compile Include="SystemManagement\Impl\ModelRepository.cs" />
+    <Compile Include="SystemManagement\Impl\SyslangRepository.cs" />
+    <Compile Include="SystemManagement\Interface\IUserCorporatePrivRepository.cs" />
+    <Compile Include="SystemManagement\Interface\IUserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YOYO.HRMS.Core\YOYO.HRMS.Core.csproj">
+      <Project>{137D6F46-B3C5-4133-B5F1-D61236013734}</Project>
+      <Name>YOYO.HRMS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YOYO.HRMS.Models\YOYO.HRMS.Models.csproj">
+      <Project>{AE451C77-39ED-4D0C-AD45-8C5C200A550D}</Project>
+      <Name>YOYO.HRMS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B176C070-8CD7-4158-BE43-B6DC8A76BA0F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YOYO.HRMS.MVC</RootNamespace>
+    <AssemblyName>YOYO.HRMS.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomAttributes\AnonymousAttribute.cs" />
+    <Compile Include="CustomAttributes\LanguageFilterAttribute.cs" />
+    <Compile Include="CustomAttributes\EasyUIExceptionResultAttribute.cs" />
+    <Compile Include="CustomAttributes\LoginAllowViewAttribute.cs" />
+    <Compile Include="CustomAttributes\PermissionFilterAttribute.cs" />
+    <Compile Include="CustomAttributes\ViewPageAttribute.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Html\FormHtmlHelper.cs" />
+    <Compile Include="Html\FormItemAdapterContext.cs" />
+    <Compile Include="Html\Generators\CheckBoxGenerator.cs" />
+    <Compile Include="Html\Generators\DefaultTagBuilderFactory.cs" />
+    <Compile Include="Html\Generators\FormTagGenerator.cs" />
+    <Compile Include="Html\Generators\GeneratorContext.cs" />
+    <Compile Include="Html\Generators\ITagBuilder.cs" />
+    <Compile Include="Html\Generators\ITagBuilderContext.cs" />
+    <Compile Include="Html\Generators\ITagBuilderFactory.cs" />
+    <Compile Include="Html\Generators\RadioButtonGenerator.cs" />
+    <Compile Include="Html\Generators\SelectContext.cs" />
+    <Compile Include="Html\Generators\SelectGenerator.cs" />
+    <Compile Include="Html\Generators\TextAreaGenerator.cs" />
+    <Compile Include="Html\Generators\TextBoxGenerator.cs" />
+    <Compile Include="Html\HtmlHelperFor.cs" />
+    <Compile Include="Html\HtmlTagAdapterContext.cs" />
+    <Compile Include="Html\IdNameFormatter.cs" />
+    <Compile Include="Html\IdTitleFormatter.cs" />
+    <Compile Include="Html\IFormItemAdapter.cs" />
+    <Compile Include="Html\IHtmlTagAdapter.cs" />
+    <Compile Include="Html\ISelectFormatter.cs" />
+    <Compile Include="Html\LocalizationHelper.cs" />
+    <Compile Include="Html\NestedTagBuilder.cs" />
+    <Compile Include="Html\ReflectiveSelectItemFormatter.cs" />
+    <Compile Include="Html\SelectLists\SelectHelper.cs" />
+    <Compile Include="Html\TagsExtensions.cs" />
+    <Compile Include="Html\TextHtmlHelper.cs" />
+    <Compile Include="Provider\LocalizedModelMetadataProvider.cs" />
+    <Compile Include="Provider\LocalizedModelValidatorProvider.cs" />
+    <Compile Include="Provider\ValidationMessageProviders.cs" />
+    <Compile Include="Provider\YoYoStringsProvider.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Views\ViewPageBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YOYO.HRMS.BusinessLogic\YOYO.HRMS.BusinessLogic.csproj">
+      <Project>{8E087DB5-288E-4E7B-AE5E-3D788C7DC2B9}</Project>
+      <Name>YOYO.HRMS.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YOYO.HRMS.Core\YOYO.HRMS.Core.csproj">
+      <Project>{137D6F46-B3C5-4133-B5F1-D61236013734}</Project>
+      <Name>YOYO.HRMS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YOYO.HRMS.Models\YOYO.HRMS.Models.csproj">
+      <Project>{AE451C77-39ED-4D0C-AD45-8C5C200A550D}</Project>
+      <Name>YOYO.HRMS.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YOYO.HRMS.Utility\YOYO.HRMS.Utility.csproj">
+      <Project>{B676D991-75E8-4A25-8271-25AFF5BA164A}</Project>
+      <Name>YOYO.HRMS.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

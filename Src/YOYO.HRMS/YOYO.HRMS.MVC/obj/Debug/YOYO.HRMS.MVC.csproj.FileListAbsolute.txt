@@ -1,0 +1,17 @@
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\obj\Debug\ResolveAssemblyReference.cache
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.MVC.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.MVC.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.BusinessLogic.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.Core.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.Models.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.Utility.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.DataAccess.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.BusinessLogic.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.Core.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.Models.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.Utility.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\YOYO.HRMS.DataAccess.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\obj\Debug\YOYO.HRMS.MVC.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\obj\Debug\YOYO.HRMS.MVC.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\Newtonsoft.Json.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.MVC\bin\Debug\Newtonsoft.Json.xml

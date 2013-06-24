@@ -1,0 +1,5 @@
+update log（2012/11/03 Paul Zhou）:
+  1.生成POCO中包含view
+  2.去除数据库table和view名称中"_"之前的部分
+  3.生成POCO class name首字母大写
+  3.生成POCO class 中property name首字母大写

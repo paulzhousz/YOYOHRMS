@@ -1,0 +1,6 @@
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Models\bin\Debug\YOYO.HRMS.Models.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Models\bin\Debug\YOYO.HRMS.Models.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Models\obj\Debug\ResolveAssemblyReference.cache
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Models\obj\Debug\YOYO.HRMS.Models.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Models\obj\Debug\YOYO.HRMS.Models.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Models\bin\Debug\YOYO.HRMS.Models.dll.config

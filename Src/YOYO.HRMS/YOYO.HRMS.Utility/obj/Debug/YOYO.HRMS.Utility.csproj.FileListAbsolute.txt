@@ -1,0 +1,7 @@
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\bin\Debug\YOYO.HRMS.Utility.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\bin\Debug\YOYO.HRMS.Utility.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\obj\Debug\ResolveAssemblyReference.cache
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\obj\Debug\YOYO.HRMS.Utility.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\obj\Debug\YOYO.HRMS.Utility.pdb
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\bin\Debug\Newtonsoft.Json.dll
+D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Utility\bin\Debug\Newtonsoft.Json.xml
