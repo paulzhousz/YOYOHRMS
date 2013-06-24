@@ -81,6 +81,19 @@
   <ItemGroup>
     <Content Include="Content\CSS\Default.css" />
     <Content Include="Content\CSS\User_Login.css" />
+    <Content Include="Content\Images\arrow.gif" />
+    <Content Include="Content\Images\blocks.gif" />
+    <Content Include="Content\Images\CategorizeMenu.png" />
+    <Content Include="Content\Images\directory.png" />
+    <Content Include="Content\Images\layout-browser-hd-bg.gif" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\nav_link.png" />
+    <Content Include="Content\Images\noscript.gif" />
+    <Content Include="Content\Images\plugin_big.gif" />
+    <Content Include="Content\Images\ShowCustomPropertiesPage.png" />
+    <Content Include="Content\Images\tabicons.png" />
+    <Content Include="Content\Images\TableDrawTable.png" />
+    <Content Include="Content\Images\tools-sprites-trans.gif" />
     <Content Include="Content\Images\user_all_bg.gif" />
     <Content Include="Content\Images\user_bottom_c.gif" />
     <Content Include="Content\Images\user_bottom_l.gif" />
@@ -1083,7 +1096,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
-    <Content Include="ViewScripts\Home\Index.js" />
+    <Content Include="Content\Scripts\Index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1111,6 +1124,7 @@
   <ItemGroup>
     <Folder Include="Areas\" />
     <Folder Include="Content\Jquery\plugin\jquery.ui\themes\classic\" />
+    <Folder Include="ViewScripts\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
