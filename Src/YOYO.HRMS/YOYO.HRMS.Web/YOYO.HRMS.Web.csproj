@@ -1417,6 +1417,7 @@
     <Content Include="Content\Scripts\My97DatePicker4.8b3\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
     <Content Include="Content\Scripts\My97DatePicker4.8b3\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
     <Content Include="Content\Scripts\My97DatePicker4.8b3\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Content\Style\images\Logo.png" />
     <Content Include="Content\Style\User_Login.css" />
     <Content Include="Content\Style\images\User login\user_all_bg.gif" />
     <Content Include="Content\Style\images\User login\user_bottom_c.gif" />
