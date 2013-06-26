@@ -130,178 +130,6 @@ namespace YOYO.HRMS.Models
 	
 
     
-	[TableName("TB_LocalizedTypes")]
-	[PrimaryKey("C_ID")]
-	[ExplicitColumns]
-    public partial class LocalizedType : YOYOHRMSDB.Record<LocalizedType>  
-    {
-        [Column("C_ID")] 
-		public long ID 
-		{ 
-			get
-			{
-				return _ID;
-			}
-			set
-			{
-				_ID = value;
-				MarkColumnModified("C_ID");
-			}
-		}
-		private long _ID;
-
-        [Column("C_LocaleId")] 
-		public int LocaleId 
-		{ 
-			get
-			{
-				return _LocaleId;
-			}
-			set
-			{
-				_LocaleId = value;
-				MarkColumnModified("C_LocaleId");
-			}
-		}
-		private int _LocaleId;
-
-        [Column("c_key")] 
-		public string Key 
-		{ 
-			get
-			{
-				return _Key;
-			}
-			set
-			{
-				_Key = value;
-				MarkColumnModified("c_key");
-			}
-		}
-		private string _Key;
-
-        [Column("c_TypeName")] 
-		public string TypeName 
-		{ 
-			get
-			{
-				return _TypeName;
-			}
-			set
-			{
-				_TypeName = value;
-				MarkColumnModified("c_TypeName");
-			}
-		}
-		private string _TypeName;
-
-        [Column("c_TextName")] 
-		public string TextName 
-		{ 
-			get
-			{
-				return _TextName;
-			}
-			set
-			{
-				_TextName = value;
-				MarkColumnModified("c_TextName");
-			}
-		}
-		private string _TextName;
-
-        [Column("c_TextValue")] 
-		public string TextValue 
-		{ 
-			get
-			{
-				return _TextValue;
-			}
-			set
-			{
-				_TextValue = value;
-				MarkColumnModified("c_TextValue");
-			}
-		}
-		private string _TextValue;
-
-        [Column("c_CorporateID")] 
-		public long? CorporateID 
-		{ 
-			get
-			{
-				return _CorporateID;
-			}
-			set
-			{
-				_CorporateID = value;
-				MarkColumnModified("c_CorporateID");
-			}
-		}
-		private long? _CorporateID;
-
-        [Column("c_Created")] 
-		public string Created 
-		{ 
-			get
-			{
-				return _Created;
-			}
-			set
-			{
-				_Created = value;
-				MarkColumnModified("c_Created");
-			}
-		}
-		private string _Created;
-
-        [Column("c_CreatDate")] 
-		public DateTime? CreatDate 
-		{ 
-			get
-			{
-				return _CreatDate;
-			}
-			set
-			{
-				_CreatDate = value;
-				MarkColumnModified("c_CreatDate");
-			}
-		}
-		private DateTime? _CreatDate;
-
-        [Column("c_Updated")] 
-		public string Updated 
-		{ 
-			get
-			{
-				return _Updated;
-			}
-			set
-			{
-				_Updated = value;
-				MarkColumnModified("c_Updated");
-			}
-		}
-		private string _Updated;
-
-        [Column("c_UpdateDate")] 
-		public DateTime? UpdateDate 
-		{ 
-			get
-			{
-				return _UpdateDate;
-			}
-			set
-			{
-				_UpdateDate = value;
-				MarkColumnModified("c_UpdateDate");
-			}
-		}
-		private DateTime? _UpdateDate;
-
-	}
-    
 	[TableName("TB_LocalizedViews")]
 	[PrimaryKey("C_ID")]
 	[ExplicitColumns]
@@ -1504,51 +1332,6 @@ namespace YOYO.HRMS.Models
 		}
 		private string _LocaleName;
 
-        [Column("Locale_ID")] 
-		public int ID 
-		{ 
-			get
-			{
-				return _ID;
-			}
-			set
-			{
-				_ID = value;
-				MarkColumnModified("Locale_ID");
-			}
-		}
-		private int _ID;
-
-        [Column("Locale_Code")] 
-		public string Code 
-		{ 
-			get
-			{
-				return _Code;
-			}
-			set
-			{
-				_Code = value;
-				MarkColumnModified("Locale_Code");
-			}
-		}
-		private string _Code;
-
-        [Column("Locale_Name")] 
-		public string Name 
-		{ 
-			get
-			{
-				return _Name;
-			}
-			set
-			{
-				_Name = value;
-				MarkColumnModified("Locale_Name");
-			}
-		}
-		private string _Name;
-
         [Column("c_CorporateID")] 
 		public long CorporateID 
 		{ 
@@ -1563,6 +1346,96 @@ namespace YOYO.HRMS.Models
 			}
 		}
 		private long _CorporateID;
+
+        [Column("c_IsEnabled")] 
+		public bool IsEnabled 
+		{ 
+			get
+			{
+				return _IsEnabled;
+			}
+			set
+			{
+				_IsEnabled = value;
+				MarkColumnModified("c_IsEnabled");
+			}
+		}
+		private bool _IsEnabled;
+
+        [Column("c_IsDeleted")] 
+		public bool? IsDeleted 
+		{ 
+			get
+			{
+				return _IsDeleted;
+			}
+			set
+			{
+				_IsDeleted = value;
+				MarkColumnModified("c_IsDeleted");
+			}
+		}
+		private bool? _IsDeleted;
+
+        [Column("c_Created")] 
+		public string Created 
+		{ 
+			get
+			{
+				return _Created;
+			}
+			set
+			{
+				_Created = value;
+				MarkColumnModified("c_Created");
+			}
+		}
+		private string _Created;
+
+        [Column("c_CreatDate")] 
+		public DateTime? CreatDate 
+		{ 
+			get
+			{
+				return _CreatDate;
+			}
+			set
+			{
+				_CreatDate = value;
+				MarkColumnModified("c_CreatDate");
+			}
+		}
+		private DateTime? _CreatDate;
+
+        [Column("c_Updated")] 
+		public string Updated 
+		{ 
+			get
+			{
+				return _Updated;
+			}
+			set
+			{
+				_Updated = value;
+				MarkColumnModified("c_Updated");
+			}
+		}
+		private string _Updated;
+
+        [Column("c_UpdateDate")] 
+		public DateTime? UpdateDate 
+		{ 
+			get
+			{
+				return _UpdateDate;
+			}
+			set
+			{
+				_UpdateDate = value;
+				MarkColumnModified("c_UpdateDate");
+			}
+		}
+		private DateTime? _UpdateDate;
 
 	}
     
@@ -1768,6 +1641,148 @@ namespace YOYO.HRMS.Models
 
 	}
     
+	[TableName("TB_UserCorporatePriv")]
+	[PrimaryKey("c_PrivID")]
+	[ExplicitColumns]
+    public partial class UserCorporatePriv : YOYOHRMSDB.Record<UserCorporatePriv>  
+    {
+        [Column("c_PrivID")] 
+		public long PrivID 
+		{ 
+			get
+			{
+				return _PrivID;
+			}
+			set
+			{
+				_PrivID = value;
+				MarkColumnModified("c_PrivID");
+			}
+		}
+		private long _PrivID;
+
+        [Column("c_UserID")] 
+		public long? UserID 
+		{ 
+			get
+			{
+				return _UserID;
+			}
+			set
+			{
+				_UserID = value;
+				MarkColumnModified("c_UserID");
+			}
+		}
+		private long? _UserID;
+
+        [Column("c_CorporateID")] 
+		public long? CorporateID 
+		{ 
+			get
+			{
+				return _CorporateID;
+			}
+			set
+			{
+				_CorporateID = value;
+				MarkColumnModified("c_CorporateID");
+			}
+		}
+		private long? _CorporateID;
+
+        [Column("c_IsEnabled")] 
+		public bool IsEnabled 
+		{ 
+			get
+			{
+				return _IsEnabled;
+			}
+			set
+			{
+				_IsEnabled = value;
+				MarkColumnModified("c_IsEnabled");
+			}
+		}
+		private bool _IsEnabled;
+
+        [Column("c_IsDeleted")] 
+		public bool? IsDeleted 
+		{ 
+			get
+			{
+				return _IsDeleted;
+			}
+			set
+			{
+				_IsDeleted = value;
+				MarkColumnModified("c_IsDeleted");
+			}
+		}
+		private bool? _IsDeleted;
+
+        [Column("c_Created")] 
+		public string Created 
+		{ 
+			get
+			{
+				return _Created;
+			}
+			set
+			{
+				_Created = value;
+				MarkColumnModified("c_Created");
+			}
+		}
+		private string _Created;
+
+        [Column("c_CreatDate")] 
+		public DateTime? CreatDate 
+		{ 
+			get
+			{
+				return _CreatDate;
+			}
+			set
+			{
+				_CreatDate = value;
+				MarkColumnModified("c_CreatDate");
+			}
+		}
+		private DateTime? _CreatDate;
+
+        [Column("c_Updated")] 
+		public string Updated 
+		{ 
+			get
+			{
+				return _Updated;
+			}
+			set
+			{
+				_Updated = value;
+				MarkColumnModified("c_Updated");
+			}
+		}
+		private string _Updated;
+
+        [Column("c_UpdateDate")] 
+		public DateTime? UpdateDate 
+		{ 
+			get
+			{
+				return _UpdateDate;
+			}
+			set
+			{
+				_UpdateDate = value;
+				MarkColumnModified("c_UpdateDate");
+			}
+		}
+		private DateTime? _UpdateDate;
+
+	}
+    
 	[TableName("TB_UserRole")]
 	[PrimaryKey("c_UserRoleID")]
 	[ExplicitColumns]
@@ -1911,7 +1926,7 @@ namespace YOYO.HRMS.Models
 	}
     
 	[TableName("TB_Corporate")]
-	[PrimaryKey("c_CorporateID", autoIncrement=false)]
+	[PrimaryKey("c_CorporateID")]
 	[ExplicitColumns]
     public partial class Corporate : YOYOHRMSDB.Record<Corporate>  
     {
@@ -2052,40 +2067,100 @@ namespace YOYO.HRMS.Models
 
 	}
     
-	[TableName("TB_UserCorporatePriv")]
-	[PrimaryKey("c_PrivID", autoIncrement=false)]
+	[TableName("TB_LocalizedTypes")]
+	[PrimaryKey("C_ID")]
 	[ExplicitColumns]
-    public partial class UserCorporatePriv : YOYOHRMSDB.Record<UserCorporatePriv>  
+    public partial class LocalizedType : YOYOHRMSDB.Record<LocalizedType>  
     {
-        [Column("c_PrivID")] 
-		public long PrivID 
+        [Column("C_ID")] 
+		public long ID 
 		{ 
 			get
 			{
-				return _PrivID;
+				return _ID;
 			}
 			set
 			{
-				_PrivID = value;
-				MarkColumnModified("c_PrivID");
+				_ID = value;
+				MarkColumnModified("C_ID");
 			}
 		}
-		private long _PrivID;
+		private long _ID;
 
-        [Column("c_UserID")] 
-		public long? UserID 
+        [Column("C_LocaleId")] 
+		public int LocaleId 
 		{ 
 			get
 			{
-				return _UserID;
+				return _LocaleId;
 			}
 			set
 			{
-				_UserID = value;
-				MarkColumnModified("c_UserID");
+				_LocaleId = value;
+				MarkColumnModified("C_LocaleId");
 			}
 		}
-		private long? _UserID;
+		private int _LocaleId;
+
+        [Column("c_key")] 
+		public string Key 
+		{ 
+			get
+			{
+				return _Key;
+			}
+			set
+			{
+				_Key = value;
+				MarkColumnModified("c_key");
+			}
+		}
+		private string _Key;
+
+        [Column("c_TypeName")] 
+		public string TypeName 
+		{ 
+			get
+			{
+				return _TypeName;
+			}
+			set
+			{
+				_TypeName = value;
+				MarkColumnModified("c_TypeName");
+			}
+		}
+		private string _TypeName;
+
+        [Column("c_TextName")] 
+		public string TextName 
+		{ 
+			get
+			{
+				return _TextName;
+			}
+			set
+			{
+				_TextName = value;
+				MarkColumnModified("c_TextName");
+			}
+		}
+		private string _TextName;
+
+        [Column("c_TextValue")] 
+		public string TextValue 
+		{ 
+			get
+			{
+				return _TextValue;
+			}
+			set
+			{
+				_TextValue = value;
+				MarkColumnModified("c_TextValue");
+			}
+		}
+		private string _TextValue;
 
         [Column("c_CorporateID")] 
 		public long? CorporateID 
@@ -2101,36 +2176,6 @@ namespace YOYO.HRMS.Models
 			}
 		}
 		private long? _CorporateID;
-
-        [Column("c_IsEnabled")] 
-		public bool IsEnabled 
-		{ 
-			get
-			{
-				return _IsEnabled;
-			}
-			set
-			{
-				_IsEnabled = value;
-				MarkColumnModified("c_IsEnabled");
-			}
-		}
-		private bool _IsEnabled;
-
-        [Column("c_IsDeleted")] 
-		public bool? IsDeleted 
-		{ 
-			get
-			{
-				return _IsDeleted;
-			}
-			set
-			{
-				_IsDeleted = value;
-				MarkColumnModified("c_IsDeleted");
-			}
-		}
-		private bool? _IsDeleted;
 
         [Column("c_Created")] 
 		public string Created 

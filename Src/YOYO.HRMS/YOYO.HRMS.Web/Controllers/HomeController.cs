@@ -42,7 +42,22 @@ namespace YOYO.HRMS.Web.Controllers
         [Anonymous]
         [ViewPage]
         public ActionResult Login()
-        {            
+        {
+            //初始化 Theme和语言
+            var themeValue = CookieHelper.GetCookieValue("YoYoThemeName");
+            if (themeValue == string.Empty)
+            {
+                CurrentParemeter.SetCurrentTheme("bootstrap");
+            }
+
+            var lanValue = CookieHelper.GetCookieValue("YoYoLanguage");
+            if (lanValue == string.Empty)
+            {
+                var clientLang = Request.UserLanguages[0];
+                CurrentParemeter.SetCurrentLan(clientLang);
+
+            }
+
             return View();
         }
 

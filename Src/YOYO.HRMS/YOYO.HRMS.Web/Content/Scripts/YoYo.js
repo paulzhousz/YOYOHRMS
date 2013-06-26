@@ -23,7 +23,7 @@
         };
         fn.prototype.set = function (cookieName, cookieValue, DayValue) {
             var expire = "";
-            var day_value = 1;
+            var day_value = 7;
             if (DayValue != null) {
                 day_value = DayValue;
             }

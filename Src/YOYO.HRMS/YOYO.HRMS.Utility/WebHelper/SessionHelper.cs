@@ -29,25 +29,25 @@ namespace YOYO.HRMS.Utility
             HttpContext.Current.Session.Add(name, val);
         }
         /// <summary>
-        /// 添加Session，调动有效期为20分钟
+        /// 添加Session，调动有效期为60分钟
         /// </summary>
         /// <param name="strSessionName">Session对象名称</param>
         /// <param name="strValue">Session值</param>
         public static void Add(string strSessionName, string strValue)
         {
             HttpContext.Current.Session[strSessionName] = strValue;
-            HttpContext.Current.Session.Timeout = 20;
+            HttpContext.Current.Session.Timeout = 60;
         }
 
         /// <summary>
-        /// 添加Session，调动有效期为20分钟
+        /// 添加Session，调动有效期为60分钟
         /// </summary>
         /// <param name="strSessionName">Session对象名称</param>
         /// <param name="strValues">Session值数组</param>
         public static void Adds(string strSessionName, string[] strValues)
         {
             HttpContext.Current.Session[strSessionName] = strValues;
-            HttpContext.Current.Session.Timeout = 20;
+            HttpContext.Current.Session.Timeout = 60;
         }
 
         /// <summary>

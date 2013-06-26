@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using YOYO.HRMS.Models;
 using YOYO.HRMS.BusinessLogic.OrganizationManagement;
 using YOYO.HRMS.BusinessLogic.SystemManagement;
+using YOYO.HRMS.Core.Localization;
+using System.Threading;
 
 namespace YOYO.HRMS.BusinessLogic
 {
@@ -16,16 +18,16 @@ namespace YOYO.HRMS.BusinessLogic
         /// <returns></returns>
         public static long GetCurrentCorporateId()
         {
-            var corp = SessionHelper.GetSession("currentCorp");
+            var corp = GetCurrentCorporate();
             Corporate _currentcorp;
             if (corp == null)
-            {               
-                _currentcorp = _corpService.GetEntity<Corporate>("");
+            {
+                _currentcorp = _corpService.GetEntity<Corporate>("and c_isEnabled=1");
                 SessionHelper.SetSession("currentCorp", _currentcorp);
-            }         
+            }
             else
             {
-                _currentcorp=corp as Corporate;
+                _currentcorp = corp;
             }
             return _currentcorp.CorporateID;
         }
@@ -36,15 +38,15 @@ namespace YOYO.HRMS.BusinessLogic
         /// <returns></returns>
         public static long GetuserID()
         {
-            var user = SessionHelper.GetSession("currentUser");
+            var user = GetCurrentUser();
             if (user == null)
             {
                 return -1;
             }
             else
             {
-                return ((User)user).UserID;
-            }                
+                return user.UserID;
+            }
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace YOYO.HRMS.BusinessLogic
         /// <param name="user">user实体</param>
         public static void SetCurrentUser(User user)
         {
-            SessionHelper.SetSession("currentUser",user);
+            SessionHelper.SetSession("currentUser", user);
         }
 
         /// <summary>
@@ -85,6 +87,72 @@ namespace YOYO.HRMS.BusinessLogic
             var _currentUser = _userService.GetEntity<User>("and c_userCode=@p_usercode", new { p_usercode = userCode });
             SessionHelper.SetSession("currentUser", _currentUser);
 
+        }
+
+        /// <summary>
+        /// 获取当前用户
+        /// </summary>
+        /// <returns></returns>
+        public static User GetCurrentUser()
+        {
+            var user = SessionHelper.GetSession("currentUser");
+            return (User)user;
+        }
+
+        /// <summary>
+        /// 获取当前登录公司
+        /// </summary>
+        /// <returns></returns>
+        public static Corporate GetCurrentCorporate()
+        {
+            var corp = SessionHelper.GetSession("currentCorp");
+            return (Corporate)corp;
+        }
+
+        /// <summary>
+        /// 设置当前用户语言
+        /// </summary>
+        /// <param name="languageName">语言名称（like zh-CN，zh-TW，en-US）</param>
+        public static void SetCurrentLan(string languageName)
+        {
+            DefaultUICulture.Set(languageName);
+            CookieHelper.SetCookie("YoYoLanguage", DefaultUICulture.Value.Name);
+
+            Thread.CurrentThread.CurrentCulture = DefaultUICulture.Value;
+            Thread.CurrentThread.CurrentUICulture = DefaultUICulture.Value;
+        }
+
+        /// <summary>
+        /// 获取当前用户语言
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCurrentLan()
+        {
+            var _currentLan = CookieHelper.GetCookieValue("YoYoLanguage");
+            //if (_currentLan == string.Empty)
+            //{
+            //    _currentLan = DefaultUICulture.Value.Name;
+            //}
+            return _currentLan;
+        }
+
+        /// <summary>
+        /// 设置当前Theme
+        /// </summary>
+        /// <param name="themeName"></param>
+        public static void SetCurrentTheme(string themeName)
+        {
+            CookieHelper.SetCookie("YoYoThemeName", themeName);
+        }
+
+        /// <summary>
+        /// 获取当前Theme
+        /// </summary>
+        /// <returns></returns>
+        public static string GetCurrentTheme()
+        {
+            var _currentTheme = CookieHelper.GetCookieValue("YoYoThemeName");
+            return _currentTheme;
         }
     }
 }

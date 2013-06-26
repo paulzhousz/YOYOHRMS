@@ -35,13 +35,13 @@ namespace YOYO.HRMS.Utility
             return str;
         }
         /// <summary>
-        /// 添加一个Cookie（24小时过期）
+        /// 添加一个Cookie（24*7小时过期）
         /// </summary>
         /// <param name="cookiename"></param>
         /// <param name="cookievalue"></param>
         public static void SetCookie(string cookiename, string cookievalue)
         {
-            SetCookie(cookiename, cookievalue, DateTime.Now.AddDays(1.0));
+            SetCookie(cookiename, cookievalue, DateTime.Now.AddDays(7.0));
         }
         /// <summary>
         /// 添加一个Cookie

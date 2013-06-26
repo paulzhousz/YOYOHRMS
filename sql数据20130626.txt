@@ -1,0 +1,5 @@
+SET IDENTITY_INSERT [dbo].[TB_User] ON
+INSERT [dbo].[TB_User] ([c_UserID], [c_UserCode], [c_UserName], [c_UserPwd], [c_MailAddress], [c_IsAdmin], [c_IsEnabled], [c_IsDeleted], [c_Created], [c_CreatDate], [c_Updated], [c_UpdateDate], [c_CorporateID]) VALUES (2, N'Admin', N'Admin', N'c4ca4238a0b92382dcc509a6f75849b', NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL)
+SET IDENTITY_INSERT [dbo].[TB_User] OFF
+
+INSERT [dbo].[TB_Corporate] ([c_CorporateID], [c_CorporateCode], [c_CorporateName], [c_IsEnabled], [c_IsDeleted], [c_Created], [c_CreatDate], [c_Updated], [c_UpdateDate]) VALUES (1, N'Test', N'²âÊÔ¹«Ë¾', 1, NULL, NULL, NULL, NULL, NULL)

@@ -43,8 +43,7 @@
                     valueField: 'corporateID',
                     textField: 'corporateName',
                     editable: false,
-                    required: true,
-                    missingMessage: '@T("required", true)',
+                    required: true,                    
                     onLoadSuccess: function () {
                         var data = $('#corporateList').combobox('getData');
                         if (data.length > 0) {

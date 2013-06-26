@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections;
 
 
 namespace YOYO.HRMS.Core.Localization
@@ -12,7 +13,9 @@ namespace YOYO.HRMS.Core.Localization
     /// </remarks>
     public static class DefaultUICulture
     {
-        private static CultureInfo _culture = new CultureInfo(2052);
+        private static readonly ArrayList supportCulture=new ArrayList {"zh-CN","zh-TW","en-US"};
+
+        private static CultureInfo _culture =new CultureInfo(supportCulture[0].ToString());
 
         /// <summary>
         ///   Gets current default culture
@@ -63,7 +66,23 @@ namespace YOYO.HRMS.Core.Localization
         {
             if (culture == null) throw new ArgumentNullException("culture");
 
-            _culture = culture;
+            Set(culture.Name);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cultureName"></param>
+        public static void Set(string cultureName)
+        {
+            if (supportCulture.Contains(cultureName))
+            {
+                _culture = new CultureInfo(cultureName);
+            }
+            else
+            {
+                _culture = new CultureInfo("en-US");
+            }
         }
 
         /// <summary>

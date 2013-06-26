@@ -1,5 +1,0 @@
-D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Core\obj\Debug\ResolveAssemblyReference.cache
-D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Core\bin\Debug\YOYO.HRMS.Core.dll
-D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Core\bin\Debug\YOYO.HRMS.Core.pdb
-D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Core\obj\Debug\YOYO.HRMS.Core.dll
-D:\Paul zhou\My HR Project\YOYO HRMS\Src\YOYO.HRMS\YOYO.HRMS.Core\obj\Debug\YOYO.HRMS.Core.pdb

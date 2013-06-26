@@ -82,15 +82,15 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
                 CloneDefaultCulture(corporateId, "", null);
             }
 
-            var textToSay = "";
+            var textToSay = string.Empty;
             var uri = ViewPromptKey.GetViewPath(viewPath,routeData);
             var id = new ViewPromptKey(uri, text);
             var prompt = _repository.GetPrompt(corporateId, CultureInfo.CurrentUICulture, id);
 
             if (prompt == null)
             {
-                textToSay = LoadCommonPrompt(corporateId, text);
-                if (textToSay == null)
+                //textToSay = LoadCommonPrompt(corporateId, text);
+                if (textToSay == string.Empty)
                     _repository.Insert(corporateId, CultureInfo.CurrentUICulture, uri, text, "");
             }
             else
