@@ -77,7 +77,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
                 throw new ArgumentNullException("text");
 
             
-            if (!_repository.Exists(corporateId, CultureInfo.CurrentUICulture))
+            if (!_repository.Exists(corporateId, DefaultUICulture.Value))
             {
                 CloneDefaultCulture(corporateId, "", null);
             }
@@ -85,13 +85,13 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             var textToSay = string.Empty;
             var uri = ViewPromptKey.GetViewPath(viewPath,routeData);
             var id = new ViewPromptKey(uri, text);
-            var prompt = _repository.GetPrompt(corporateId, CultureInfo.CurrentUICulture, id);
+            var prompt = _repository.GetPrompt(corporateId, DefaultUICulture.Value, id);
 
             if (prompt == null)
             {
                 //textToSay = LoadCommonPrompt(corporateId, text);
                 if (textToSay == string.Empty)
-                    _repository.Insert(corporateId, CultureInfo.CurrentUICulture, uri, text, "");
+                    _repository.Insert(corporateId, DefaultUICulture.Value, uri, text, "");
             }
             else
                 textToSay = prompt.TextValue;
@@ -132,10 +132,10 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
         public virtual string LoadCommonPrompt(long corporateId, string text)
         {
             var key = new ViewPromptKey("Common", text);
-            var prompt = _repository.GetPrompt(corporateId, CultureInfo.CurrentUICulture, key);
+            var prompt = _repository.GetPrompt(corporateId, DefaultUICulture.Value, key);
             if (prompt == null)
             {
-                _repository.Insert(corporateId, CultureInfo.CurrentUICulture, "Common", text, text);
+                _repository.Insert(corporateId, DefaultUICulture.Value, "Common", text, text);
             }
             return prompt == null ? text : prompt.TextValue;
         }
@@ -147,7 +147,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
         /// <seealso cref="DefaultUICulture" />
         public virtual void CloneDefaultCulture(long corporateId,string filterSql, params object[] args)
         {
-            var phrases = _repository.GetAllPrompts(corporateId, DefaultUICulture.Value, filterSql, args);
+            var phrases = _repository.GetAllPrompts(corporateId, DefaultUICulture.defaultValue, filterSql, args);
 
             if (phrases != null)
             {
@@ -158,7 +158,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
                     {
                         _repository.Insert(
                             phrase.CorporateID,
-                            CultureInfo.CurrentUICulture,
+                            DefaultUICulture.Value,
                             phrase.ViewPath,
                             phrase.TextName,
                             phrase.TextValue

@@ -18,12 +18,19 @@ namespace YOYO.HRMS.Core.Localization
 
         private static CultureInfo _culture =new CultureInfo(supportCulture[0].ToString());
 
+        private static CultureInfo _defaultCulture = _culture;
+
         /// <summary>
-        ///   Gets current default culture
+        ///   Gets current  culture
         /// </summary>
         public static CultureInfo Value
         {
             get { return _culture; }
+        }
+
+        public static CultureInfo defaultValue
+        {
+            get { return _defaultCulture; }
         }
 
         /// <summary>
