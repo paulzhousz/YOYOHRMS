@@ -63,13 +63,13 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             //}
 
             var key = new TypePromptKey(type.FullName, name);
-            var prompt = _repository.GetPrompt(corporateId,CultureInfo.CurrentUICulture,key) ??
-                         _repository.GetPrompt(corporateId, CultureInfo.CurrentUICulture,
+            var prompt = _repository.GetPrompt(corporateId, DefaultUICulture.Value, key) ??
+                         _repository.GetPrompt(corporateId, DefaultUICulture.Value,
                                                new TypePromptKey(typeof(CommonPrompts).FullName, name));
 
             if (prompt == null)
             {
-                _repository.Insert(corporateId,CultureInfo.CurrentUICulture, type.FullName, name, "");
+                _repository.Insert(corporateId, DefaultUICulture.Value, type.FullName, name, "");
             }
             else
             {

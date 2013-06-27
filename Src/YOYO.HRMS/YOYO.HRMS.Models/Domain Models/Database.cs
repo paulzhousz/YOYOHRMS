@@ -300,6 +300,21 @@ namespace YOYO.HRMS.Models
 		}
 		private DateTime? _UpdateDate;
 
+        [Column("c_localename")] 
+		public string Localename 
+		{ 
+			get
+			{
+				return _Localename;
+			}
+			set
+			{
+				_Localename = value;
+				MarkColumnModified("c_localename");
+			}
+		}
+		private string _Localename;
+
 	}
     
 	[TableName("TB_Module")]
@@ -2236,6 +2251,21 @@ namespace YOYO.HRMS.Models
 			}
 		}
 		private DateTime? _UpdateDate;
+
+        [Column("c_localename")] 
+		public string Localename 
+		{ 
+			get
+			{
+				return _Localename;
+			}
+			set
+			{
+				_Localename = value;
+				MarkColumnModified("c_localename");
+			}
+		}
+		private string _Localename;
 
 	}
 }

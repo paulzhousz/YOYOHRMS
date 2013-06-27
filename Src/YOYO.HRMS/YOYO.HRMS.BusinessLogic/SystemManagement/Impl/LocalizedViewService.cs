@@ -37,7 +37,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             if (string.IsNullOrEmpty(text))
                 throw new ArgumentNullException("text");
 
-            if (!_repository.Exists(corporateId, CultureInfo.CurrentUICulture))
+            if (!_repository.Exists(corporateId, DefaultUICulture.Value))
             {
                 CloneDefaultCulture(corporateId, "", null);
             }
@@ -45,13 +45,13 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             var textToSay = "";
             var uri = ViewPromptKey.GetViewPath(routeData);
             var id = new ViewPromptKey(uri, text);
-            var prompt = _repository.GetPrompt(corporateId, CultureInfo.CurrentUICulture, id);
+            var prompt = _repository.GetPrompt(corporateId, DefaultUICulture.Value, id);
 
             if (prompt == null)
             {
                 textToSay = LoadCommonPrompt(corporateId,text);
                 if (textToSay == null)
-                    _repository.Insert(corporateId,CultureInfo.CurrentUICulture,uri,text,"");
+                    _repository.Insert(corporateId, DefaultUICulture.Value, uri, text, "");
             }
             else
                 textToSay = prompt.TextValue;
@@ -118,9 +118,9 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
         /// </example>
         public virtual string FormatMissingPrompt(string text)
         {
-            return (DefaultUICulture.LCID==CultureInfo.CurrentUICulture.LCID)
+            return (DefaultUICulture.Value==DefaultUICulture.defaultValue)
                 ?text
-                : string.Format("{1}:[{0}]", text, CultureInfo.CurrentUICulture);
+                : string.Format("{1}:[{0}]", text, DefaultUICulture.Value.Name);
         }
 
         /// <summary>

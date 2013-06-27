@@ -62,7 +62,8 @@ namespace YOYO.HRMS.DataAccess.SystemManagement
                 Key = pathKey.ToString(),
                 TypeName = typeName,
                 TextName = textName,
-                TextValue = translatedText
+                TextValue = translatedText,
+                Localename = DefaultUICulture.Value.Name
             };
             return Insert(view);
         }
