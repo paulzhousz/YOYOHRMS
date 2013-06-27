@@ -1,6 +1,10 @@
 ﻿@{
     Layout = null;
-    var _clientLang = YOYO.HRMS.Core.Localization.DefaultUICulture.Value.Name;    
+    var _clientLang = CookieHelper.GetCookieValue("YoYoLanguage");
+    if (_clientLang == string.Empty)
+    {
+        _clientLang = YOYO.HRMS.Core.Localization.DefaultUICulture.Value.Name;
+    }   
 }
 <!DOCTYPE html>
 <html>

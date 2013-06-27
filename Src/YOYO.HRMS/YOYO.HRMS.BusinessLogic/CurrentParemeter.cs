@@ -118,8 +118,6 @@ namespace YOYO.HRMS.BusinessLogic
             DefaultUICulture.Set(languageName);
             CookieHelper.SetCookie("YoYoLanguage", DefaultUICulture.Value.Name);
 
-            Thread.CurrentThread.CurrentCulture = DefaultUICulture.Value;
-            Thread.CurrentThread.CurrentUICulture = DefaultUICulture.Value;
         }
 
         /// <summary>

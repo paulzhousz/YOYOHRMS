@@ -5,6 +5,7 @@ using YOYO.HRMS.BusinessLogic.SystemManagement;
 using YOYO.HRMS.MVC.Html;
 using YOYO.HRMS.MVC.Html.SelectLists;
 using YOYO.HRMS.BusinessLogic;
+using YOYO.HRMS.Core.Localization;
 
 
 namespace YOYO.HRMS.MVC.Views
@@ -102,6 +103,12 @@ namespace YOYO.HRMS.MVC.Views
         {
             base.InitializePage();
             AddScriptForView(VirtualPath);
+            var _currentLang = CurrentParemeter.GetCurrentLan();
+            if (_currentLang == string.Empty)
+            {
+                _currentLang=Request.UserLanguages[0];
+            }
+            CurrentParemeter.SetCurrentLan(_currentLang);
         }
 
         #region js file register

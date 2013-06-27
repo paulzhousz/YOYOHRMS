@@ -10,6 +10,10 @@
             });
             /*index_layout.layout('collapse', 'east');*/
 
+            InitThemeMenuIcon();
+
+            InitLanMenuIcon();
+
             index_tabs = $('#index_tabs').tabs({
                 fit: true,
                 border: false,
@@ -98,6 +102,39 @@
                 }
             });
         });
+        /*初始化Language菜单选择图标*/
+        function InitLanMenuIcon() {
+            if ($.cookie('YoYoLanguage')) {
+                $('#layout_north_lanMenu').menu('setIcon', {
+                    target: $('#layout_north_lanMenu div[title=' + $.cookie('YoYoLanguage') + ']')[0],
+                    iconCls: 'tick'
+                });
+            }
+        }
+
+
+        /*初始化Theme菜单选择图标*/
+        function InitThemeMenuIcon() {
+            if ($.cookie('YoYoThemeName')) {
+                $('#layout_north_pfMenu').menu('setIcon', {
+                    target: $('#layout_north_pfMenu div[title=' + $.cookie('YoYoThemeName') + ']')[0],
+                    iconCls: 'tick'
+                });
+            }
+        }
+        /*更换系统语言*/
+        function changeLangeage(lanName) {
+            $.post(
+                '@Url.Content("~/Home/ChangeLanguage")',
+                { languName: lanName },
+                function (data) {
+                    var data = $.parseJSON(data);
+                    if (data.Result) {
+                        location.reload();
+                    }
+                });            
+        };
+
 
         /*更换EasyUI主题的方法*/
         function changeThemeFun(themeName) {
@@ -132,7 +169,8 @@
                 }
             }
 
-            $.cookie('easyuiThemeName', themeName, {
+            $.cookie('YoYoThemeName', themeName, {
+                path: '/',
                 expires: 7
             });
 
@@ -197,10 +235,23 @@
     @*North 面板 开始*@
     <div data-options="region:'north'" style="height: 70px; overflow: hidden;" class="logo">
         <div style="position: absolute; right: 0px; bottom: 0px;">
-        <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'cog'">
-            更换皮肤</a> <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_kzmbMenu',iconCls:'cog'">
-                控制面板</a> <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_zxMenu',iconCls:'cog'">
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_lanMenu',iconCls:'cog'">
+                更换语言</a>
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'cog'">
+                更换皮肤</a> 
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_kzmbMenu',iconCls:'cog'">
+                控制面板</a> 
+                <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_zxMenu',iconCls:'cog'">
                     注销</a>
+    </div>
+
+    <div id="layout_north_lanMenu" style="width: 120px; display: none;">
+        <div onclick="changeLangeage('en-US');" title="en-US">
+            English</div>
+        <div onclick="changeLangeage('zh-CN');" title="zh-CN">
+            简体中文</div>
+        <div onclick="changeLangeage('zh-TW');" title="zh-TW">
+            繁体中文</div>
     </div>
     <div id="layout_north_pfMenu" style="width: 120px; display: none;">
         <div onclick="changeThemeFun('default');" title="default">
@@ -270,7 +321,7 @@
     <div data-options="region:'center'" title="@welcomeMsg" style="overflow: hidden;">
         <div id="index_tabs" style="overflow: hidden;">
             <div title="首页" data-options="border:false" style="overflow: hidden;">
-                <iframe src="http://www.163.com" frameborder="0" style="border: 0; width: 100%; height: 98%;">
+                <iframe src="/Home/TabIndex" frameborder="0" style="border: 0; width: 100%; height: 98%;">
                 </iframe>
             </div>
         </div>

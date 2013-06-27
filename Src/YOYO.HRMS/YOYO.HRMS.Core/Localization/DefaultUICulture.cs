@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections;
+using System.Threading;
 
 
 namespace YOYO.HRMS.Core.Localization
@@ -83,6 +84,8 @@ namespace YOYO.HRMS.Core.Localization
             {
                 _culture = new CultureInfo("en-US");
             }
+            Thread.CurrentThread.CurrentCulture = _culture;
+            Thread.CurrentThread.CurrentUICulture = _culture;
         }
 
         /// <summary>

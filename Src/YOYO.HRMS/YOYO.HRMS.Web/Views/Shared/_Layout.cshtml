@@ -1,5 +1,9 @@
 ﻿@{ 
-    var _clientLang = YOYO.HRMS.Core.Localization.DefaultUICulture.Value.Name; 
+    var _clientLang = CookieHelper.GetCookieValue("YoYoLanguage");
+    if (_clientLang==string.Empty)
+    {
+        _clientLang = YOYO.HRMS.Core.Localization.DefaultUICulture.Value.Name; 
+    }
 }
 <!DOCTYPE html>
 <html>
@@ -19,10 +23,10 @@
     <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery-easyui-1.3.3/jquery.easyui.min.js")"></script>
 
     <!-- 加载EasyUI资源文件 -->
-    @if (_clientLang == "zh-CN"||_clientLang=="zh-TW")
-    { 
+    @if (_clientLang == "zh-CN" || _clientLang == "zh-TW")
+    {
         _clientLang = _clientLang.Replace("-", "_");
-        <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery-easyui-1.3.3/locale/easyui-lang-"+@_clientLang+".js")"></script>    
+        <script id="localeFile" type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery-easyui-1.3.3/locale/easyui-lang-" + @_clientLang + ".js")"></script>    
     }
     
     <!-- 修复EasyUI1.3.3中layout组件的BUG -->

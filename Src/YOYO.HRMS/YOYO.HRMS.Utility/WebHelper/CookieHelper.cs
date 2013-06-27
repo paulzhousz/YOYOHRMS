@@ -53,6 +53,7 @@ namespace YOYO.HRMS.Utility
         {
             var cookie = new HttpCookie(cookiename)
             {
+                Path="/",
                 Value = cookievalue,
                 Expires = expires
             };

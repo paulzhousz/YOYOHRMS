@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel;
+using System.Globalization;
 
 using YOYO.HRMS.BusinessLogic;
 using YOYO.HRMS.BusinessLogic.SystemManagement;
 using YOYO.HRMS.BusinessLogic.OrganizationManagement;
 using YOYO.HRMS.MVC.CustomAttributes;
 using YOYO.HRMS.Models;
+using YOYO.HRMS.Core.Localization;
 using YOYO.HRMS.MVC.Controllers;
 using YOYO.HRMS.Web.ViewModels;
 using YOYO.HRMS.Utility;
@@ -39,24 +41,25 @@ namespace YOYO.HRMS.Web.Controllers
             return View();
         }
 
+        [Description("Tab首页")]
+        [LoginAllowView]
+        [ViewPage]
+        public ActionResult TabIndex()
+        {
+            return View();
+        }
+
         [Anonymous]
         [ViewPage]
         public ActionResult Login()
         {
-            //初始化 Theme和语言
+            //初始化 Theme
             var themeValue = CookieHelper.GetCookieValue("YoYoThemeName");
             if (themeValue == string.Empty)
             {
                 CurrentParemeter.SetCurrentTheme("bootstrap");
             }
 
-            var lanValue = CookieHelper.GetCookieValue("YoYoLanguage");
-            if (lanValue == string.Empty)
-            {
-                var clientLang = Request.UserLanguages[0];
-                CurrentParemeter.SetCurrentLan(clientLang);
-
-            }
 
             return View();
         }
@@ -100,5 +103,23 @@ namespace YOYO.HRMS.Web.Controllers
             return result;
         }
 
+        [Description("更改系统语言")]
+        [LoginAllowView]
+        [HttpPost]
+        public ActionResult ChangeLanguage(string languName)
+        {
+            bool status = false;
+            try
+            {
+                CurrentParemeter.SetCurrentLan(languName);
+                status = true;
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            var data = new { Result = status };
+            return Json(data, "text/html");
+        }
     }
 }
