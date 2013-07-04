@@ -6,6 +6,7 @@ using Autofac.Integration.Mvc;
 using System.Web.Mvc;
 using System.Reflection;
 using YOYO.HRMS.DataAccess.SystemManagement;
+using YOYO.HRMS.Utility;
 
 namespace YOYO.HRMS.Web
 {
@@ -30,6 +31,7 @@ namespace YOYO.HRMS.Web
 
             builder.RegisterType<PetaPocoDBFactory>().As<IDBFactory>().InstancePerHttpRequest();
             builder.RegisterType<PetaPocoUnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<NlogLogger>().As<ILogger>();
 
             builder.RegisterAssemblyTypes(typeof(LocalizedViewRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository")).AsImplementedInterfaces();

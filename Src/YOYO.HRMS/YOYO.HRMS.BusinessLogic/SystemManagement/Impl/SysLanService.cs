@@ -10,25 +10,25 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
 {
     public class SysLanService:BaseService<SysLang>,ISysLanService
     {
-        private readonly long _currentCorporateId;
+       // private readonly long _currentCorporateId;
         private readonly IUnitOfWork _uow;
         private readonly ISyslangRepository _repository;
 
         public SysLanService(IUnitOfWork uow, ISyslangRepository repository)
             : base(uow, repository)
         {            
-            _currentCorporateId = CurrentParemeter.GetCurrentCorporateId();
+          //  _currentCorporateId = CurrentParemeter.GetCurrentCorporateId();
             _uow = uow;
             _repository = repository;
         }
         
-        public CultureInfo GetCurrentLang(string cultureName)
+        public CultureInfo GetCurrentLang(long corporateID,string cultureName)
         {
             try
             {
                 var culture = new CultureInfo(cultureName);
                 return _repository.Exists<SysLang>("where c_CorporateID=@corpID and C_LocaleId=@localeId",
-                                             new { corpID = _currentCorporateId, localeID = culture.LCID }) ? culture : GetDefaultLang();
+                                             new { corpID = corporateID, localeID = culture.LCID }) ? culture : GetDefaultLang();
             }
             catch (Exception)
             {

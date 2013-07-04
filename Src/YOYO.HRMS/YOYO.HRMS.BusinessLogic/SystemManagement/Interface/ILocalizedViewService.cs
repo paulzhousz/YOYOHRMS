@@ -1,6 +1,8 @@
 ﻿using YOYO.HRMS.Core.Localization;
 using System.Web.Routing;
 using YOYO.HRMS.Models;
+using System.Collections.Generic;
+
 
 namespace YOYO.HRMS.BusinessLogic.SystemManagement
 {
@@ -54,6 +56,8 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
         /// <returns>Translation if found; otherwise null</returns>
         /// <remarks>Used to avoid duplications of prompts.</remarks>
         string LoadCommonPrompt(long corporateId, string text);
+
+        IEnumerable<LocalizedView> LoadAllCommonPrompts(string cultureName);
 
          /// <summary>
         /// Clone the default culture 

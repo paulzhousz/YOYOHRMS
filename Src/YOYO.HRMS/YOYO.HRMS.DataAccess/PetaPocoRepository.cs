@@ -188,5 +188,11 @@ namespace YOYO.HRMS.DataAccess
         {
             return (GetCounts<TPassType>(sql) > 0);
         }
+
+
+        public string LastSQL()
+        {
+            return DBContext.LastSQL;
+        }
     }
 }

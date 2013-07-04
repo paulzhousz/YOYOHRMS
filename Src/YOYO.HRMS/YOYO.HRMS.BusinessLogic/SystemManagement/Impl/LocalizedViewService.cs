@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Routing;
 using System.Globalization;
+using System.Collections.Generic;
+
 using YOYO.HRMS.Core.Localization;
 using YOYO.HRMS.Core.Repository;
 using YOYO.HRMS.DataAccess.SystemManagement;
@@ -138,6 +140,13 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
                 _repository.Insert(corporateId, DefaultUICulture.Value, "Common", text, text);
             }
             return prompt == null ? text : prompt.TextValue;
+        }
+
+
+        public virtual IEnumerable<LocalizedView> LoadAllCommonPrompts(string cultureName)
+        {
+            int lanCode=new CultureInfo(cultureName).LCID;
+            return Query<LocalizedView>(" and c_LocaleID=@p_localeID and c_viewPath=@p_viewpath", new { p_localeID = lanCode, p_viewpath="Common" });
         }
 
         /// <summary>

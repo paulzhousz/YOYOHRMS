@@ -9,7 +9,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
 {
     public interface ISysLanService:IBaseService<SysLang>
     {
-        CultureInfo GetCurrentLang(string cultureName);
+        CultureInfo GetCurrentLang(long corporateID,string cultureName);
         CultureInfo GetDefaultLang();
         IEnumerable<SysLang> GetLangList();
     }

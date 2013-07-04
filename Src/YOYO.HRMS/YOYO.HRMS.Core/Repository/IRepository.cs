@@ -36,5 +36,6 @@ namespace YOYO.HRMS.Core.Repository
         long GetCounts<TPassType>(string sql);
         bool Exists<TPassType>(string sql, params object[] args);
         bool Exists<TPassType>(string sql);
+        string LastSQL();
     }
 }

@@ -6,6 +6,17 @@
  * @requires jQuery,EasyUI
  * 
  */
+$(function () {
+    //加载JS Common多语言数据
+    $.getScript('/Scripts/JSPrompts.js');
+});
+
+
+//var loadingPrompts = Prompts.loading;
+//if (loadingPrompts == undefined) {
+//    loadingPrompts = "Prompts.loading undefined!";
+//}
+
 $.fn.panel.defaults.loadingMessage = '加载中....';
 $.fn.datagrid.defaults.loadMsg = '加载中....';
 
@@ -374,7 +385,7 @@ $.modalDialog = function(options) {
 			},
 			onOpen : function() {
 				parent.$.messager.progress({
-					title : '提示',
+					title : '提示'
 					text : '数据处理中，请稍后....'
 				});
 			}

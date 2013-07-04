@@ -13,8 +13,6 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
 {
     public class UserService:BaseService<User>,IUserService
     {
-        private readonly long _currentCorporateId;
-        private readonly long _currentUserID;
         private readonly IUnitOfWork _uow;
         private readonly  IUserRepository _repository;
         private readonly IUserCorporatePrivRepository _userCorpPrivRepo;
@@ -26,8 +24,6 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             IUserCorporatePrivRepository userCorpPrivRepo)
             : base(uow, repository)
         {            
-            _currentCorporateId = CurrentParemeter.GetCurrentCorporateId();
-            _currentUserID = CurrentParemeter.GetuserID();
             _uow = uow;
             _repository = repository;
             _corpRepo = corpRepo;
@@ -83,7 +79,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             User user = _repository.SingleOrDefault<User>(userID);
             if (!user.IsNullOrEmpty())
             {
-                return _repository.ChangePassword(user, newPassword, _currentUserID.ToString());
+                return _repository.ChangePassword(user, newPassword, userID.ToString());
 
             }
             else

@@ -21,7 +21,7 @@ namespace YOYO.HRMS.Utility
         public static FormatJsonResult JsonFormat(this Controller c, object data)
         { 
           FormatJsonResult result = new FormatJsonResult();
-          result.NotLigerUIFriendlySerialize = true;
+          result.NotUIFriendlySerialize = true;
             result.Data = data;
             return result;
         
@@ -126,7 +126,7 @@ namespace YOYO.HRMS.Utility
         /// <summary>
         /// 正常序列化方式(为True则不进行UI友好的序列化)
         /// </summary>
-        public bool NotLigerUIFriendlySerialize { get; set; }
+        public bool NotUIFriendlySerialize { get; set; }
         public override void ExecuteResult(ControllerContext context)
         {
          
@@ -135,8 +135,14 @@ namespace YOYO.HRMS.Utility
                     throw new ArgumentNullException("context");
                 }
                 HttpResponseBase response = context.HttpContext.Response;
-                response.ContentType = "application/json";
-
+                if (!NotUIFriendlySerialize)
+                {
+                    response.ContentType = "text/html";
+                }
+                else
+                {
+                    response.ContentType = "application/json";
+                }
                 StringWriter sw = new StringWriter();
                 JsonSerializer serializer = JsonSerializer.Create(
                     new JsonSerializerSettings
@@ -153,7 +159,7 @@ namespace YOYO.HRMS.Utility
                 {
                     jsonWriter.Formatting = Formatting.Indented;
 
-                    if (!NotLigerUIFriendlySerialize)
+                    if (!NotUIFriendlySerialize)
                         serializer.Serialize(jsonWriter, this);
                     else
                         serializer.Serialize(jsonWriter, Data);

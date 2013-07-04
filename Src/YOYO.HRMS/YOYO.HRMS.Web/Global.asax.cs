@@ -22,6 +22,7 @@ namespace YOYO.HRMS.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("JSPrompts", "scripts/JSPrompts.js", new { controller = "Language", action = "Language" });
             routes.MapRoute(
                 "Default", // 路由名称
                 "{controller}/{action}/{id}", // 带有参数的 URL

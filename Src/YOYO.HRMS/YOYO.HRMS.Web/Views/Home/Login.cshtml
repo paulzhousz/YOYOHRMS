@@ -70,11 +70,11 @@
                         }
                         return isValid;
                     },
-                    success: function (data) {
-                        var data = $.parseJSON(data);
-                        if (!data.Result) {
+                    success: function (result) {
+                        var result = $.parseJSON(result);
+                        if (result.IsError) {
                             //YoYo.Tips('Error', data.Message);
-                            $.messager.alert(data.Title, data.Message, 'error');
+                            $.messager.alert('@T("Error",true)', result.Message, 'error');
                             return false;
                         }
                         else {

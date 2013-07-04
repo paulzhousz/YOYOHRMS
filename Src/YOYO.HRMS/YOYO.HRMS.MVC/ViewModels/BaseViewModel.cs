@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace YOYO.HRMS.MVC.ViewModel
+namespace YOYO.HRMS.MVC.ViewModels
 {
     /// <summary>
     /// ViewModel基类

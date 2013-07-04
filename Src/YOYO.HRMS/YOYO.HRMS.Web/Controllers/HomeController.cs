@@ -6,15 +6,15 @@ using System.Web.Mvc;
 using System.ComponentModel;
 using System.Globalization;
 
-using YOYO.HRMS.BusinessLogic;
 using YOYO.HRMS.BusinessLogic.SystemManagement;
 using YOYO.HRMS.BusinessLogic.OrganizationManagement;
 using YOYO.HRMS.MVC.CustomAttributes;
 using YOYO.HRMS.Models;
 using YOYO.HRMS.Core.Localization;
 using YOYO.HRMS.MVC.Controllers;
-using YOYO.HRMS.Web.ViewModels;
+using YOYO.HRMS.MVC.ViewModels;
 using YOYO.HRMS.Utility;
+using YOYO.HRMS.MVC;
 
 namespace YOYO.HRMS.Web.Controllers
 {
@@ -50,6 +50,7 @@ namespace YOYO.HRMS.Web.Controllers
         }
 
         [Anonymous]
+        [Description("系统登陆页面")]
         [ViewPage]
         public ActionResult Login()
         {
@@ -68,23 +69,37 @@ namespace YOYO.HRMS.Web.Controllers
         [Anonymous]    
         public ActionResult LoginAndRedirect()
         {
-            UserViewModel model = new UserViewModel(HttpContext);
-            bool status=false;
-            var result = _userService.LoginVerify(model.CorporateID, model.UserCode, model.UserPwd);
+            UserRequest request = new UserRequest(HttpContext);
+            bool isError=true;
+            var result = _userService.LoginVerify(request.CorporateID, request.UserCode, request.UserPwd);
+            var message= FriendlyMessage.ToMessage(result);
             if (result == UserMessage.UserLoginSuccess)
             {
-                status = true;
-                CurrentParemeter.SetCurrentCorp(model.CorporateID);
-                CurrentParemeter.SetCurrentUser(model.UserCode);
+                isError = false;
+                CurrentParemeter.SetCurrentCorp(request.CorporateID);
+                CurrentParemeter.SetCurrentUser(request.UserCode);
+
+                //写操作日志
+                string logmsg = string.Format("用户[{0}]登陆[{1}]成功！",
+                    CurrentParemeter.GetCurrentUser().UserCode,
+                    CurrentParemeter.GetCurrentCorporate().CorporateCode);
+
+                string controlName = RouteData.Values["controller"].ToString();
+                string actionName = RouteData.Values["action"].ToString();
+                string desc = "";
+                
+               
+                LogOP(controlName, actionName, desc, logmsg, "");
             }
             else
             {
-                status = false;
+                isError = true;
             }
-            var data = new { Result = status,
-                Title=_localizedViewService.LoadCommonPrompt(model.CorporateID,"Error"),
-                Message = FriendlyMessage.ToMessage(result) };
-            return Json(data,"text/html");
+            //var data = new { Result = status,
+            //    Title=_localizedViewService.LoadCommonPrompt(request.CorporateID,"Error"),
+            //    Message = FriendlyMessage.ToMessage(result) };
+            //return Json(data,"text/html");
+            return this.JsonFormat(isError, isError, message);
            // return this.JsonFormat(status,!status, FriendlyMessage.ToMessage(result));         
         }
 
@@ -99,7 +114,8 @@ namespace YOYO.HRMS.Web.Controllers
                          corporateID = n.CorporateID,
                          corporateName = "[" + n.CorporateCode + "]" + n.CorporateName
                      };
-            var result = Json(items, JsonRequestBehavior.AllowGet);
+            //var result = Json(items, JsonRequestBehavior.AllowGet);
+            var result = this.JsonFormat(items);
             return result;
         }
 
@@ -121,5 +137,7 @@ namespace YOYO.HRMS.Web.Controllers
             var data = new { Result = status };
             return Json(data, "text/html");
         }
+
+        
     }
 }

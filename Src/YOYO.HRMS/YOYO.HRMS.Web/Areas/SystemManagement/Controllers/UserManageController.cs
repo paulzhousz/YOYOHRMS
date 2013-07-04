@@ -10,12 +10,17 @@ using System.ComponentModel;
 
 namespace YOYO.HRMS.Web.SystemManagement.Areas.SystemManagement.Controllers
 {
-    public class UserManageController : Controller
+    public class UserManageController : BaseController
     {
         //
         // GET: /SystemManagement/UserManage/
 
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult ChangePassword()
         {
             return View();
         }

@@ -125,14 +125,14 @@
         /*更换系统语言*/
         function changeLangeage(lanName) {
             $.post(
-                '@Url.Content("~/Home/ChangeLanguage")',
-                { languName: lanName },
-                function (data) {
-                    var data = $.parseJSON(data);
-                    if (data.Result) {
-                        location.reload();
-                    }
-                });            
+				'@Url.Content("~/Home/ChangeLanguage")',
+				{ languName: lanName },
+				function (data) {
+				    var data = $.parseJSON(data);
+				    if (data.Result) {
+				        location.reload();
+				    }
+				});
         };
 
 
@@ -173,8 +173,7 @@
                 path: '/',
                 expires: 7
             });
-
-        };
+        }
 
         function logoutFun(b) {
             $.getJSON('${pageContext.request.contextPath}/userController/logout', {
@@ -194,16 +193,43 @@
                 title: '修改密码',
                 width: 300,
                 height: 250,
-                href: '${pageContext.request.contextPath}/userController/editCurrentUserPwdPage',
+                href: '@Url.Content("~/SystemManagement/UserManage/ChangePassword")',
                 buttons: [{
                     text: '修改',
                     handler: function () {
-                        var f = parent.$.modalDialog.handler.find('#editCurrentUserPwdForm');
-                        f.submit();
+                        $('#editUserPwdForm').form({
+                            url: '@Url.Content("~/SystemManagement/UserManage/ChangePassword")',
+                            onSubmit: function () {
+                                var isValid = $(this).form('validate');
+                                if (!isValid) {
+                                }
+                                return isValid;
+                            },
+                            success: function (data) {
+                                var data = $.parseJSON(data);
+                                if (!data.Result) {
+                                    $.messager.alert(data.Title, data.Message, 'error');
+                                    return false;
+                                }
+                                else {
+                                    $(this).form('clear');
+                                    $.messager.alert(data.Title, data.Message, 'info');
+                                }
+                            }
+                        });
                     }
-                }]
+                },
+							{
+							    text: '取消',
+							    iconCls: "icon-cancel",
+							    handler: function () {
+							        parent.$.modalDialog.handler.dialog('close');
+							    }
+							}
+							]
             });
         }
+
         function currentUserRole() {
             parent.$.modalDialog({
                 title: '我的角色',
@@ -224,100 +250,135 @@
     </script>
 }
 @{
-    var currentuser=@CurrentParemeter.GetCurrentUser();
-    var currentCorp=@CurrentParemeter.GetCurrentCorporate();
-    var welcomeMsg=@T("Welcome",false)+"   "+@T("CurrentUser",false)+":["+currentuser.UserCode+"]"
-        + currentuser.UserName + "  " + @T("CurrentCorp", false)+":["+currentCorp.CorporateCode+"]"
-        +currentCorp.CorporateName;
+    var currentuser = YOYO.HRMS.MVC.CurrentParemeter.GetCurrentUser();
+    var currentCorp = YOYO.HRMS.MVC.CurrentParemeter.GetCurrentCorporate();
+    var welcomeMsg = @T("Welcome", false) + "   " + @T("CurrentUser", false) + ":[" + currentuser.UserCode + "]"
+        + currentuser.UserName + "  " + @T("CurrentCorp", false) + ":[" + currentCorp.CorporateCode + "]"
+        + currentCorp.CorporateName;
 }
-<div id="index_layout">        
-    
+<div id="index_layout">
     @*North 面板 开始*@
     <div data-options="region:'north'" style="height: 70px; overflow: hidden;" class="logo">
         <div style="position: absolute; right: 0px; bottom: 0px;">
             <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_lanMenu',iconCls:'cog'">
-                更换语言</a>
-            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'cog'">
-                更换皮肤</a> 
-            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_kzmbMenu',iconCls:'cog'">
-                控制面板</a> 
-                <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_zxMenu',iconCls:'cog'">
-                    注销</a>
-    </div>
-
-    <div id="layout_north_lanMenu" style="width: 120px; display: none;">
-        <div onclick="changeLangeage('en-US');" title="en-US">
-            English</div>
-        <div onclick="changeLangeage('zh-CN');" title="zh-CN">
-            简体中文</div>
-        <div onclick="changeLangeage('zh-TW');" title="zh-TW">
-            繁体中文</div>
-    </div>
-    <div id="layout_north_pfMenu" style="width: 120px; display: none;">
-        <div onclick="changeThemeFun('default');" title="default">
-            default</div>
-        <div onclick="changeThemeFun('gray');" title="gray">
-            gray</div>
-        <div onclick="changeThemeFun('metro');" title="metro">
-            metro</div>
-        <div onclick="changeThemeFun('bootstrap');" title="bootstrap">
-            bootstrap</div>
-        <div onclick="changeThemeFun('black');" title="black">
-            black</div>
-        <div class="menu-sep">
+                更换语言</a> <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'cog'">
+                    更换皮肤</a> <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_kzmbMenu',iconCls:'cog'">
+                        控制面板</a>
+            <!--<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_zxMenu',iconCls:'cog'">
+					注销</a>-->
         </div>
-        <div onclick="changeThemeFun('cupertino');" title="cupertino">
-            cupertino</div>
-        <div onclick="changeThemeFun('dark-hive');" title="dark-hive">
-            dark-hive</div>
-        <div onclick="changeThemeFun('pepper-grinder');" title="pepper-grinder">
-            pepper-grinder</div>
-        <div onclick="changeThemeFun('sunny');" title="sunny">
-            sunny</div>
-        <div class="menu-sep">
+        <div id="layout_north_lanMenu" style="width: 120px; display: none;">
+            <div onclick="changeLangeage('en-US');" title="en-US">
+                English</div>
+            <div onclick="changeLangeage('zh-CN');" title="zh-CN">
+                简体中文</div>
+            <div onclick="changeLangeage('zh-TW');" title="zh-TW">
+                繁体中文</div>
         </div>
-        <div onclick="changeThemeFun('metro-blue');" title="metro-blue">
-            metro-blue</div>
-        <div onclick="changeThemeFun('metro-gray');" title="metro-gray">
-            metro-gray</div>
-        <div onclick="changeThemeFun('metro-green');" title="metro-green">
-            metro-green</div>
-        <div onclick="changeThemeFun('metro-orange');" title="metro-orange">
-            metro-orange</div>
-        <div onclick="changeThemeFun('metro-red');" title="metro-red">
-            metro-red</div>
-    </div>
-    <div id="layout_north_kzmbMenu" style="width: 100px; display: none;">
-        <div onclick="editCurrentUserPwd();">
-            修改密码</div>
-        <div class="menu-sep">
+        <div id="layout_north_pfMenu" style="width: 120px; display: none;">
+            <div onclick="changeThemeFun('default');" title="default">
+                default</div>
+            <div onclick="changeThemeFun('gray');" title="gray">
+                gray</div>
+            <div onclick="changeThemeFun('metro');" title="metro">
+                metro</div>
+            <div onclick="changeThemeFun('bootstrap');" title="bootstrap">
+                bootstrap</div>
+            <div onclick="changeThemeFun('black');" title="black">
+                black</div>
+            <div class="menu-sep">
+            </div>
+            <div onclick="changeThemeFun('cupertino');" title="cupertino">
+                cupertino</div>
+            <div onclick="changeThemeFun('dark-hive');" title="dark-hive">
+                dark-hive</div>
+            <div onclick="changeThemeFun('pepper-grinder');" title="pepper-grinder">
+                pepper-grinder</div>
+            <div onclick="changeThemeFun('sunny');" title="sunny">
+                sunny</div>
+            <div class="menu-sep">
+            </div>
+            <div onclick="changeThemeFun('metro-blue');" title="metro-blue">
+                metro-blue</div>
+            <div onclick="changeThemeFun('metro-gray');" title="metro-gray">
+                metro-gray</div>
+            <div onclick="changeThemeFun('metro-green');" title="metro-green">
+                metro-green</div>
+            <div onclick="changeThemeFun('metro-orange');" title="metro-orange">
+                metro-orange</div>
+            <div onclick="changeThemeFun('metro-red');" title="metro-red">
+                metro-red</div>
         </div>
-        <div onclick="currentUserRole();">
-            我的角色</div>
-        <div class="menu-sep">
+        <div id="layout_north_kzmbMenu" style="width: 100px; display: none;">
+            <div onclick="editCurrentUserPwd();">
+                切换公司</div>
+            <div class="menu-sep">
+            </div>
+            <div onclick="editCurrentUserPwd();">
+                修改密码</div>
+            <div class="menu-sep">
+            </div>
+            <div onclick="logoutFun(true);">
+                退出系统</div>
+            <div class="menu-sep">
+            </div>
+            <div onclick="currentUserRole();">
+                我的角色</div>
+            <div class="menu-sep">
+            </div>
+            <div onclick="currentUserResource();">
+                我的权限</div>
         </div>
-        <div onclick="currentUserResource();">
-            我的权限</div>
     </div>
-    <div id="layout_north_zxMenu" style="width: 100px; display: none;">
-        <div onclick="logoutFun();">
-            锁定窗口</div>
-        <div class="menu-sep">
+    @*修改密码弹窗*@
+    <div id="EditPassword" class="easyui-layout" data-options="border:false" style="width: 300px;
+        display: none">
+        <div data-options="region:'center',border:false" title="" style="overflow: hidden;">
+            <form id="editUserPwdForm" method="post">
+            <table @*class="table table-hover table-condensed"*@ width="270">
+                <tr>
+                    <th width="100">
+                        登录名
+                    </th>
+                    <td>
+                        [@currentuser.UserCode]@currentuser.UserName
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        原密码
+                    </th>
+                    <td>
+                        <input name="oldPwd" type="password" placeholder="请输入原密码" class="easyui-validatebox"
+                            data-options="required:true">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        新密码
+                    </th>
+                    <td>
+                        <input name="pwd" type="password" placeholder="请输入新密码" class="easyui-validatebox"
+                            data-options="required:true">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        重复
+                    </th>
+                    <td>
+                        <input name="rePwd" type="password" placeholder="请再次输入新密码" class="easyui-validatebox"
+                            data-options="required:true,validType:'eqPwd[\'#editUserPwdForm input[name=pwd]\']'">
+                    </td>
+                </tr>
+            </table>
+            </form>
         </div>
-        <div onclick="logoutFun();">
-            重新登录</div>
-        <div onclick="logoutFun(true);">
-            退出系统</div>
     </div>
-    </div>
-    @*North 面板 结束*@ 
-
-    @*West 面板 结束*@
+    @*North 面板 结束*@ @*West 面板 结束*@
     <div data-options="region:'west',split:true" title="模块导航" style="width: 200px; overflow: hidden;">
     </div>
-    @*West 面板 结束*@
-
-    @*Center 面板 开始*@
+    @*West 面板 结束*@ @*Center 面板 开始*@
     <div data-options="region:'center'" title="@welcomeMsg" style="overflow: hidden;">
         <div id="index_tabs" style="overflow: hidden;">
             <div title="首页" data-options="border:false" style="overflow: hidden;">
@@ -326,22 +387,16 @@
             </div>
         </div>
     </div>
-    @*Center 面板 结束*@ 
-    
-    @*East 面板 开始
+    @*Center 面板 结束*@ @*East 面板 开始
 		<div data-options="region:'east'" title="日历" style="width: 230px; overflow: hidden;"></div>
-    East 面板 结束*@ 
-    
-    @*South 面板 开始*@
+	East 面板 结束*@ @*South 面板 开始*@
     <div data-options="region:'south',border:false" style="height: 30px; overflow: hidden;">
         <div class="panel-header panel-title" style="text-align: center;">
-	        版权所有 YoYo Father</a>
-</div>
+            版权所有 YoYo Father</a>
+        </div>
     </div>
     @*South 面板 结束*@
-
 </div>
-
 @*Tab弹出菜单*@
 <div id="index_tabsMenu" style="width: 120px; display: none;">
     <div title="refresh" data-options="iconCls:'transmit'">

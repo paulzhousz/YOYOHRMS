@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Web.Mvc;
 using YOYO.HRMS.BusinessLogic.SystemManagement;
+using YOYO.HRMS.BusinessLogic;
 
 namespace YOYO.HRMS.MVC.CustomAttributes
 {
@@ -14,7 +15,7 @@ namespace YOYO.HRMS.MVC.CustomAttributes
             var cultureCookie = request.Cookies["_culture"];
             if (request.UserLanguages != null)
                 cultureName = cultureCookie != null ? cultureCookie.Value : request.UserLanguages[0];
-            var currentCulture = lanService.GetCurrentLang(cultureName);
+            var currentCulture = lanService.GetCurrentLang(CurrentParemeter.GetCurrentCorporateId(), cultureName);
             Thread.CurrentThread.CurrentCulture = currentCulture;
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 

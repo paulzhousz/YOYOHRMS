@@ -4,9 +4,11 @@ using YOYO.HRMS.Models;
 using YOYO.HRMS.BusinessLogic.OrganizationManagement;
 using YOYO.HRMS.BusinessLogic.SystemManagement;
 using YOYO.HRMS.Core.Localization;
-using System.Threading;
+using YOYO.HRMS.MVC.ViewModels;
+using System.Collections.Generic;
+using System.Web;
 
-namespace YOYO.HRMS.BusinessLogic
+namespace YOYO.HRMS.MVC
 {
     public class CurrentParemeter
     {
@@ -151,6 +153,49 @@ namespace YOYO.HRMS.BusinessLogic
         {
             var _currentTheme = CookieHelper.GetCookieValue("YoYoThemeName");
             return _currentTheme;
+        }
+
+        /// <summary>
+        /// 应用程序加载所有的Controller
+        /// </summary>
+        /// <returns></returns>
+        public static IList<MVCController> GetAllController()
+        {
+
+            IList<MVCController> items = new List<MVCController>();
+            if (HttpContext.Current.Application["MVCController"] == null)
+            {
+                HttpContext.Current.Application["MVCAction"] = SysAction.GetAllActionByAssembly(out items);
+                HttpContext.Current.Application["MVCController"] = items;
+            }
+            else
+            {
+                items = (IList<MVCController>)HttpContext.Current.Application["MVCController"];
+
+            }
+            return items;
+        }
+
+        /// <summary>
+        /// 应用程序加载所有的Action动作
+        /// </summary>
+        /// <returns></returns>
+        public static IList<MVCAction> GetAllAction()
+        {
+            IList<MVCAction> items = new List<MVCAction>();
+            IList<MVCController> controllers = new List<MVCController>();
+            if (HttpContext.Current.Application["MVCAction"] == null)
+            {
+                items = SysAction.GetAllActionByAssembly(out controllers);
+                HttpContext.Current.Application["MVCAction"] = items;
+                HttpContext.Current.Application["MVCController"] = controllers;
+            }
+            else
+            {
+                items = (IList<MVCAction>)HttpContext.Current.Application["MVCAction"];
+
+            }
+            return items;
         }
     }
 }

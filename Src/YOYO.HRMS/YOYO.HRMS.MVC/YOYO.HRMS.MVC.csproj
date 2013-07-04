@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomAttributes\AnonymousAttribute.cs" />
+    <Compile Include="CustomAttributes\DefaultPageAttribute.cs" />
     <Compile Include="CustomAttributes\LanguageFilterAttribute.cs" />
     <Compile Include="CustomAttributes\EasyUIExceptionResultAttribute.cs" />
     <Compile Include="CustomAttributes\LoginAllowViewAttribute.cs" />
@@ -86,7 +87,12 @@
     <Compile Include="Provider\LocalizedModelValidatorProvider.cs" />
     <Compile Include="Provider\ValidationMessageProviders.cs" />
     <Compile Include="Provider\YoYoStringsProvider.cs" />
-    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="SystemSetting\CurrentParemeter.cs" />
+    <Compile Include="SystemSetting\SysAction.cs" />
+    <Compile Include="ViewModels\ActionModel\MVCAction.cs" />
+    <Compile Include="ViewModels\ActionModel\MVCController.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel\SystemManagement\UserRequest.cs" />
     <Compile Include="Views\ViewPageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
