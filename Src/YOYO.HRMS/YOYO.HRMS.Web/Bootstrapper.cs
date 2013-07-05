@@ -25,7 +25,7 @@ namespace YOYO.HRMS.Web
 
             //注册Controls
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            //builder.RegisterControllers(new Assembly[]{Assembly.Load()})
+            builder.RegisterControllers(new Assembly[] { Assembly.Load("YOYO.HRMS.Web.SystemManagement") });
 
 
 

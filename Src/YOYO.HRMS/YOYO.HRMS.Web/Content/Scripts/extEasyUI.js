@@ -17,8 +17,8 @@ $(function () {
 //    loadingPrompts = "Prompts.loading undefined!";
 //}
 
-$.fn.panel.defaults.loadingMessage = '加载中....';
-$.fn.datagrid.defaults.loadMsg = '加载中....';
+$.fn.panel.defaults.loadingMessage = '加载中....'/*Prompts.Loading*/;
+$.fn.datagrid.defaults.loadMsg = '加载中....'/*Prompts.Loading*/;
 
 /**
  * @author 孙宇
@@ -248,7 +248,7 @@ $.extend($.fn.validatebox.defaults.rules, {
 		validator : function(value, param) {
 			return value == $(param[0]).val();
 		},
-		message : '密码不一致！'
+		message : '密码不一致！'/* Prompts.PwdNotSame*/
 	}
 });
 
@@ -385,8 +385,8 @@ $.modalDialog = function(options) {
 			},
 			onOpen : function() {
 				parent.$.messager.progress({
-					title : '提示'
-					text : '数据处理中，请稍后....'
+					title : /*'提示'*/Prompts.Info,
+					text : /*'数据处理中，请稍后....'*/Prompts.Loading
 				});
 			}
 		}, options);

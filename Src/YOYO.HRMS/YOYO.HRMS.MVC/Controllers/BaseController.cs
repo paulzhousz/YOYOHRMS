@@ -5,6 +5,7 @@ using YOYO.HRMS.MVC.CustomAttributes;
 using YOYO.HRMS.Utility;
 using YOYO.HRMS.Models;
 using YOYO.HRMS.BusinessLogic;
+using YOYO.HRMS.BusinessLogic.SystemManagement;
 using System;
 
 namespace YOYO.HRMS.MVC.Controllers
@@ -21,6 +22,7 @@ namespace YOYO.HRMS.MVC.Controllers
     public class BaseController : Controller
     {
         private ILogger _logger;
+        private ILocalizedViewService _viewLocalizer;
         private string _userID;
         private string _userCode;
         private string _corporateID;
@@ -31,6 +33,15 @@ namespace YOYO.HRMS.MVC.Controllers
             {
                 return _logger ??
                     (_logger = DependencyResolver.Current.GetService<ILogger>());
+            }
+        }
+
+        protected ILocalizedViewService ViewLocalizer
+        {
+            get
+            {
+                return _viewLocalizer??
+                    (_viewLocalizer = DependencyResolver.Current.GetService<ILocalizedViewService>());
             }
         }
 
@@ -88,6 +99,24 @@ namespace YOYO.HRMS.MVC.Controllers
         protected void LogException(string controllerName, string actionName, string desc, string lastSql, Exception ex)
         {
             Logger.LogException(CorporateID, UserID, UserCode, controllerName, actionName, desc, lastSql,ex);
+        }
+
+        /// <summary>
+        /// 获取多语言信息
+        /// </summary>
+        /// <param name="text">key值</param>
+        /// <param name="commonText">是否为common text</param>
+        /// <returns></returns>
+        protected string T(string text, bool commonText)
+        {
+            if (!commonText)
+            {
+                return ViewLocalizer.Translate(long.Parse(CorporateID), RouteData, text);
+            }
+            else
+            {
+                return ViewLocalizer.LoadCommonPrompt(long.Parse(CorporateID), text);
+            }
         }
     }
 }

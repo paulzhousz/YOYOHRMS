@@ -188,40 +188,22 @@
             });
         }
 
+        /*修改当前用户密码方法*/
         function editCurrentUserPwd() {
             parent.$.modalDialog({
-                title: '修改密码',
+                title: /*'修改密码'*/'@T("ChangePwd",false)',
                 width: 300,
                 height: 250,
                 href: '@Url.Content("~/SystemManagement/UserManage/ChangePassword")',
                 buttons: [{
-                    text: '修改',
+                    text: /*'修改'*/'@T("OK",true)',
                     handler: function () {
-                        $('#editUserPwdForm').form({
-                            url: '@Url.Content("~/SystemManagement/UserManage/ChangePassword")',
-                            onSubmit: function () {
-                                var isValid = $(this).form('validate');
-                                if (!isValid) {
-                                }
-                                return isValid;
-                            },
-                            success: function (data) {
-                                var data = $.parseJSON(data);
-                                if (!data.Result) {
-                                    $.messager.alert(data.Title, data.Message, 'error');
-                                    return false;
-                                }
-                                else {
-                                    $(this).form('clear');
-                                    $.messager.alert(data.Title, data.Message, 'info');
-                                }
-                            }
-                        });
+                        var f = parent.$.modalDialog.handler.find('#editUserPwdForm');                       
+                        f.submit();
                     }
                 },
 							{
-							    text: '取消',
-							    iconCls: "icon-cancel",
+							    text: /*'取消'*/'@T("Cancel",true)',
 							    handler: function () {
 							        parent.$.modalDialog.handler.dialog('close');
 							    }
@@ -330,52 +312,8 @@
                 我的权限</div>
         </div>
     </div>
-    @*修改密码弹窗*@
-    <div id="EditPassword" class="easyui-layout" data-options="border:false" style="width: 300px;
-        display: none">
-        <div data-options="region:'center',border:false" title="" style="overflow: hidden;">
-            <form id="editUserPwdForm" method="post">
-            <table @*class="table table-hover table-condensed"*@ width="270">
-                <tr>
-                    <th width="100">
-                        登录名
-                    </th>
-                    <td>
-                        [@currentuser.UserCode]@currentuser.UserName
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        原密码
-                    </th>
-                    <td>
-                        <input name="oldPwd" type="password" placeholder="请输入原密码" class="easyui-validatebox"
-                            data-options="required:true">
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        新密码
-                    </th>
-                    <td>
-                        <input name="pwd" type="password" placeholder="请输入新密码" class="easyui-validatebox"
-                            data-options="required:true">
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        重复
-                    </th>
-                    <td>
-                        <input name="rePwd" type="password" placeholder="请再次输入新密码" class="easyui-validatebox"
-                            data-options="required:true,validType:'eqPwd[\'#editUserPwdForm input[name=pwd]\']'">
-                    </td>
-                </tr>
-            </table>
-            </form>
-        </div>
-    </div>
-    @*North 面板 结束*@ @*West 面板 结束*@
+    
+    @*North 面板 结束*@ @*West 面板 开始*@
     <div data-options="region:'west',split:true" title="模块导航" style="width: 200px; overflow: hidden;">
     </div>
     @*West 面板 结束*@ @*Center 面板 开始*@

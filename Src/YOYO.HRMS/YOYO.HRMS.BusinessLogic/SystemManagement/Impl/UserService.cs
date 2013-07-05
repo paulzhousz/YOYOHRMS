@@ -57,7 +57,7 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
             //用户无此公司登陆权限
             //else if (!UserCorporateVerify(corporateID,user.UserID))
             //{
-                //TODO 1111
+                //TODO:增加用户是否有登陆相应公司权限判断
             //    return UserMessage.NotAccessCorporate;
             //}
             else
@@ -77,9 +77,10 @@ namespace YOYO.HRMS.BusinessLogic.SystemManagement
         public bool ChangePassword(long userID, string newPassword)
         {
             User user = _repository.SingleOrDefault<User>(userID);
+            string MD5pwd = MD5Provider.Hash(newPassword);
             if (!user.IsNullOrEmpty())
             {
-                return _repository.ChangePassword(user, newPassword, userID.ToString());
+                return _repository.ChangePassword(user, MD5pwd, user.UserCode);
 
             }
             else

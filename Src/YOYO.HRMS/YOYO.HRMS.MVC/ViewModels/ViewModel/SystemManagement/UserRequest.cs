@@ -15,7 +15,10 @@ namespace YOYO.HRMS.MVC.ViewModels
 
         public UserRequest(HttpContextBase context)
         {
-            CorporateID = long.Parse(context.Request["corporateList"]);
+            if (context.Request["corporateList"] != null)
+            {
+                CorporateID = long.Parse(context.Request["corporateList"]);
+            }
             UserCode = context.Request["usercode"];
             UserPwd = context.Request["userpwd"];
             OldUserPwd = context.Request["oldPassword"];
